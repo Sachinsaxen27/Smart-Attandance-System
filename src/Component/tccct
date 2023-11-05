@@ -1,0 +1,89 @@
+// import Modal from 'react-modal';
+// const [modalIsOpen, setModalIsOpen] = useState(false);
+// const modalContent = (
+//     <div>
+//       <h2>Camera</h2>
+//       <video id="camera-view"></video>
+//       <button onClick={takePicture}>Take Picture</button>
+//       <button onClick={recordVideo}>Record Video</button>
+//       <button onClick={closeModal}>Close</button>
+//     </div>
+//   );
+//   const openModal = () => {
+//     setModalIsOpen(true);
+//     startCamera();
+//   }
+  
+//   const closeModal = () => {
+//     setModalIsOpen(false);
+//     stopCamera();
+//   }
+  
+//   const startCamera = () => {
+//     navigator.mediaDevices.getUserMedia({ video: true })
+//       .then(stream => {
+//         const videoElement = document.getElementById('camera-view');
+//         videoElement.srcObject = stream;
+//         videoElement.play();
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       });
+//   }
+  
+//   const stopCamera = () => {
+//     const videoElement = document.getElementById('camera-view');
+//     const stream = videoElement.srcObject;
+//     const tracks = stream.getTracks();
+  
+//     tracks.forEach(track => {
+//       track.stop();
+//     });
+  
+//     videoElement.srcObject = null;
+//   }
+  
+//   const takePicture = () => {
+//     const canvas = document.createElement('canvas');
+//     const videoElement = document.getElementById('camera-view');
+//     canvas.width = videoElement.videoWidth;
+//     canvas.height = videoElement.videoHeight;
+//     const context = canvas.getContext('2d');
+//     context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+//     const imageData = canvas.toDataURL('image/png');
+//     console.log(imageData);
+//   }
+  
+//   const recordVideo = () => {
+//     const videoElement = document.getElementById('camera-view');
+//     const mediaRecorder = new MediaRecorder(videoElement.srcObject);
+//     const chunks = [];
+  
+//     mediaRecorder.addEventListener('dataavailable', event => {
+//       chunks.push(event.data);
+//     });
+  
+//     mediaRecorder.addEventListener('stop', event => {
+//       const videoBlob = new Blob(chunks, { type: 'video/mp4' });
+//       const videoUrl = URL.createObjectURL(videoBlob);
+//       console.log(videoUrl);
+//     });
+  
+//     mediaRecorder.start();
+  
+//     setTimeout(() => {
+//       mediaRecorder.stop();
+//     }, 5000);
+//   }
+//   return (
+//     <div>
+//       <button onClick={openModal}>Open Camera</button>
+//       <Modal
+//         isOpen={modalIsOpen}
+//         onRequestClose={closeModal}
+//       >
+//         {modalContent}
+//       </Modal>
+//     </div>
+//   );
+      
